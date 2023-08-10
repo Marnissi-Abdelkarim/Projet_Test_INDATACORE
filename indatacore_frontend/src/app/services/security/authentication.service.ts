@@ -34,17 +34,19 @@ export class AuthenticationService {
     return this.http.post<any>(`${this.apiUrl}users`, { username, email, password });
   }
 
-  getAuthenticatedUser(): string | null {
+
+  getAuthenticatedUser() {
     return sessionStorage.getItem('email');
   }
 
-  getToken(): string | null {
+  getToken() {
     return this.getAuthenticatedUser() ? sessionStorage.getItem('token') : null;
   }
 
-  isAuthenticated(): boolean {
-    return this.getToken() !== undefined;
+  isAuthenticated(){
+    return this.getToken() != null;
   }
+
 
   logout() {
     sessionStorage.removeItem('email');

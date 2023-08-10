@@ -1,0 +1,39 @@
+<div class="account section" style="padding-top: 160px">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6" style="background-color: #f8fcfd">
+        <div class="login-form border p-5">
+          <div class="text-center heading" style="margin-bottom: 20px">
+            <h2 class="mb-2">Register</h2>
+          </div>
+          <form [formGroup]="formGroupRegister" (ngSubmit)="register()">
+            <div class="form-group mb-4">
+              <input formControlName="username" style="background:white " type="text" class="form-control" placeholder="Enter Your Username" >
+              <div *ngIf="username.invalid && (username.dirty || username.touched) " class="text-danger">
+                <span *ngIf="username.errors['required']">username required</span>
+                <span *ngIf="username.errors['minlength']">username min length is 4 </span>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <input formControlName="email" style="background:white " type="text" class="form-control" placeholder="Enter Email Address" >
+              <div *ngIf="email.invalid && (email.dirty || email.touched) " class="text-danger">
+                <span *ngIf="email.errors['required']">email required</span>
+                <span *ngIf="email.errors['pattern']">email incorrect</span>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <input formControlName="password" style="background:white " type="password" class="form-control" placeholder="Enter Password" >
+              <div *ngIf="password.invalid && (password.dirty || password.touched) " class="text-danger">
+                <span *ngIf="password.errors['required'] || password.errors['onlyContainSpace']">password required</span>
+                <span *ngIf="password.errors['minlength']">password min 4 char</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-main mt-3 btn-block" style="background: #007bff;border:#007bff;">Sign Up</button>
+            <p class="lead" style="display: flex;justify-content: space-between;margin-top: 8px;">Already have an account? <a routerLink="/login" style="color: #007bff">Login now</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
