@@ -50,6 +50,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.signWith(SignatureAlgorithm.HS512, SecurityConstants.TOKEN_SECRET).compact();
 		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 		response.addHeader("user_Id", userDto.getUserId());
-		response.getWriter().write("{\"token\":\"" + token + "\",\"id\": \"" + userDto.getUserId() + "\" } ");
+		response.getWriter().write("{\"token\":\"" + token + "\",\"email\": \"" + userDto.getEmail() + "\" } ");
 	}
 }

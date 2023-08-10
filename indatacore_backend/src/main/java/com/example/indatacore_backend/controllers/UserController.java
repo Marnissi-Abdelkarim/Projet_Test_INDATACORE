@@ -23,7 +23,7 @@ import java.util.List;
 public class UserController {
 	@Autowired
 	UserService userService;
-	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
 		UserDto userDto = userService.getUserByUserId(id);
 		ModelMapper modelMapper = new ModelMapper();
@@ -32,7 +32,7 @@ public class UserController {
 	}
 
 	//get all users by pages
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<UserResponse> getAllUsers(@RequestParam(value = "page", defaultValue = "1") int page,
 			@RequestParam(value = "limit", defaultValue = "15") int limit,
 			@RequestParam(value = "search", defaultValue = "") String search,Principal principal) {
